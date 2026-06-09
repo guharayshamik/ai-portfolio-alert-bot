@@ -168,3 +168,34 @@ Be cautious adding large call positions immediately before earnings."""
             )
 
     return alerts
+
+
+
+def get_nearest_portfolio_earnings():
+    earnings = get_watchlist_earnings(days=14)
+
+    portfolio_symbols = {
+        "MU",
+        "MRVL",
+        "COHR",
+        "NVDA",
+        "AMD",
+        "ARM",
+        "INTC",
+    }
+
+    nearest = None
+
+    for item in earnings:
+        if item["symbol"] not in portfolio_symbols:
+            continue
+
+        days_left = item.get("days_left")
+
+        if days_left is None:
+            continue
+
+        if nearest is None or days_left < nearest["days_left"]:
+            nearest = item
+
+    return nearest

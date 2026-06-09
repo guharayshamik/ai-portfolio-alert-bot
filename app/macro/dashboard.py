@@ -2,6 +2,8 @@ from app.macro.vix import get_vix
 from app.macro.treasury import get_us2y, get_us10y, get_yield_curve
 from app.macro.assets import get_dxy, get_crude_oil
 from app.market_data import get_daily_change_pct
+from app.macro.call_score import build_call_buying_report
+from app.earnings import get_nearest_portfolio_earnings
 
 
 def fmt_pct(value):
@@ -127,6 +129,7 @@ def build_macro_dashboard():
     curve = get_yield_curve()
     dxy = get_dxy()
     crude = get_crude_oil()
+    nearest_earnings = get_nearest_portfolio_earnings()
 
     try:
         hyg = get_daily_change_pct("HYG")
@@ -148,6 +151,18 @@ def build_macro_dashboard():
         hyg=hyg,
         jnk=jnk
     )
+
+    call_buying_report = build_call_buying_report(
+            vixy,
+            us2y,
+            us10y,
+            curve,
+            dxy,
+            crude,
+            hyg,
+            jnk,
+            nearest_earnings
+        )
 
     label = macro_label(score)
 
@@ -177,6 +192,8 @@ def build_macro_dashboard():
 
 Macro Risk Score: {score}/100
 Macro Risk: {label}
+
+{call_buying_report}
 
 Volatility:
 VIXY: {vixy_line}
