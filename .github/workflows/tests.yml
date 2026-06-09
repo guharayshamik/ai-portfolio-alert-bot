@@ -2,15 +2,16 @@ name: Run tests
 
 on:
   push:
-    branches: [ master, main ]
+    branches: [ main ]
   pull_request:
-    branches: [ master, main ]
+    branches: [ main ]
 
 jobs:
   test:
     runs-on: ubuntu-latest
 
     env:
+      PYTHONPATH: ${{ github.workspace }}
       FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
       FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
       TELEGRAM_BOT_TOKEN: dummy
