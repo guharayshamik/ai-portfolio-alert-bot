@@ -165,7 +165,9 @@ WATCHLISTS = {
             "HYG": "iShares High Yield Corporate Bond ETF",
             "JNK": "SPDR Bloomberg High Yield Bond ETF",
             "TLT": "iShares 20+ Year Treasury Bond ETF",
-            "VIXY": "ProShares VIX Short-Term Futures ETF"
+            "VIXY": "ProShares VIX Short-Term Futures ETF",
+            "USO": "United States Oil Fund",
+            "DXY": "US Dollar Index"
         }
     }
 }
@@ -243,12 +245,21 @@ STOCK_METADATA = {
     "UNH": {"name": "UnitedHealth Group", "industry": "Health Insurance", "sector": "Healthcare", "portfolio": False, "alert_threshold": -3},
     "ABBV": {"name": "AbbVie", "industry": "Pharma", "sector": "Healthcare", "portfolio": False, "alert_threshold": -3},
     "PFE": {"name": "Pfizer", "industry": "Pharma", "sector": "Healthcare", "portfolio": False, "alert_threshold": -3},
-    "MRK": {"name": "Merck & Co", "industry": "Pharma", "sector": "Healthcare", "portfolio": False, "alert_threshold": -3}
+    "MRK": {"name": "Merck & Co", "industry": "Pharma", "sector": "Healthcare", "portfolio": False, "alert_threshold": -3},
+    "USO": {"name": "United States Oil Fund", "industry": "Oil ETF", "sector": "Energy / Macro", "portfolio": False, "alert_threshold": -3},
+    #"DXY": {"name": "US Dollar Index", "industry": "Dollar Index", "sector": "Macro", "portfolio": False, "alert_threshold": 1},
+    "DXY": {
+    "name": "US Dollar Index",
+    "industry": "Dollar Index",
+    "sector": "Macro",
+    "portfolio": False,
+    "alert_threshold": -1
+    }
 }
 
 
 FAST_SYMBOLS = [
-    "QQQ", "SPY", "SMH", "SOXX", "HYG", "JNK", "TLT", "VIXY",
+    "QQQ", "SPY", "SMH", "SOXX", "HYG", "JNK", "TLT", "VIXY", "USO", "DXY",
     "MU", "MRVL", "COHR", "NVDA", "AMD",
     "PANW", "CRWD"
 ]
@@ -348,4 +359,15 @@ PORTFOLIO_SYMBOLS = [
     "AMD",
     "ARM",
     "INTC",
+]
+
+MACRO_SYMBOLS = [
+    "VIXY",   # fear
+    "TLT",    # rates
+    "DXY",    # dollar
+    "USO",    # energy
+    "HYG",    # credit
+    "JNK",    # credit
+    "QQQ",    # growth
+    "SOXX"    # semis
 ]
